@@ -247,7 +247,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -278,108 +278,125 @@
             }
         }
 
+        .report-container, .form-section {
+             margin-bottom: 20px;
+        }
+
+        /* === CSS BARU UNTUK TAMPILAN STRUK DI LAYAR === */
         .ticket-container {
-            background: var(--light);
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            margin: 20px 0;
+            max-width: 450px; /* Memberi kesan ramping seperti kertas struk */
+            margin: 20px auto; /* Pusatkan di tengah layar */
+            border: 1px dashed #888;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace; /* FONT WAJIB untuk tampilan struk! */
+            background: #fff;
             box-shadow: var(--shadow);
             position: relative;
         }
 
-        .ticket-header {
-            background: transparent;
-            color: black;
-            padding: 15px;
+        .ticket-container .ticket-preview-content {
+            color: #000;
+            font-size: 10pt;
+        }
+
+        .ticket-container .company-info {
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .ticket-container .logo {
+            max-width: 100px; /* Ukuran logo di pratinjau */
+            margin-bottom: 10px;
+        }
+        
+        .ticket-container .company-details h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .ticket-container .company-details p {
+            font-size: 9pt;
+            margin: 2px 0;
+        }
+
+        .ticket-container .ticket-title {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-top: 1px dashed #000;
+            border-bottom: 1px dashed #000;
+            padding: 5px 0;
+            margin: 15px 0;
             text-align: center;
         }
 
-        .company-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .ticket-container .ticket-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 10px;
         }
 
-        .company-details h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+        .ticket-container .ticket-table td {
+            padding: 2px 0;
+            border: none;
+            font-size: 10pt;
+            vertical-align: top;
+        }
+
+        .ticket-container .ticket-table td:first-child {
+            width: 120px; /* Atur lebar kolom label */
+            font-weight: normal;
             color: #000;
         }
-
-        .company-details p {
-            font-size: 0.9rem;
-            margin-bottom: 3px;
+        
+        .ticket-container .ticket-separator {
+            border: none;
+            border-top: 1px dashed #000;
+            margin: 8px 0;
         }
 
-        .ticket-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .ticket-container .netto-row td {
+            font-weight: bold;
+            font-size: 11pt;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            padding-top: 4px;
+            padding-bottom: 4px;
         }
 
-        .ticket-body {
-            padding: 20px;
-        }
-
-        .ticket-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .ticket-table td {
-            padding: 10px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9rem;
-        }
-
-        .ticket-table td:first-child {
-            font-weight: 500;
-            color: #424242;
-            width: 160px;
-        }
-
-        .netto-row td {
-            border-top: 2px solid var(--dark);
-            border-bottom: 2px solid var(--dark);
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--dark);
-        }
-
-        .signature-area {
+        .ticket-container .signature-area {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             margin-top: 25px;
-            padding-top: 15px;
+            padding-top: 10px;
         }
 
-        .signature-box {
+        .ticket-container .signature-box {
             text-align: center;
-            width: 200px;
+            width: 45%;
+        }
+        
+        .ticket-container .signature-box p {
+            font-size: 10pt;
         }
 
-        .signature-line {
-            margin-top: 60px;
-            height: 1px;
+        .ticket-container .signature-line {
+            margin-top: 40px;
+            border-top: 1px solid #000;
         }
-
-        .ticket-note {
-            text-align: left;
-            font-size: 0.8rem;
-            font-style: italic;
+        
+        .ticket-container .ticket-note {
+            font-size: 8pt;
+            text-align: center;
             margin-top: 20px;
-            color: #424242;
+            padding-top: 10px;
+            border-top: 1px dashed #000;
+            font-style: normal;
         }
+        /* === AKHIR DARI CSS BARU === */
 
-        .report-container {
-            background: var(--light);
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            position: relative;
-        }
 
         .report-header {
             background: var(--primary);
@@ -454,11 +471,11 @@
             z-index: 10;
             cursor: pointer;
         }
-
+        
         .report-table th.sortable:hover {
             background: var(--primary-dark);
         }
-
+        
         .report-table th.sort-asc::after {
             content: ' ↑';
         }
@@ -517,19 +534,15 @@
             display: none;
         }
         
-        /* === PERBAIKAN CSS PRINT DIMULAI DI SINI === */
-
         #print-area {
-            display: none; /* Sembunyikan secara default */
+            display: none;
         }
 
         @media print {
-            /* Sembunyikan semua elemen di luar area cetak */
             body > *:not(#print-area) {
                 display: none !important;
             }
 
-            /* Tampilkan area cetak dan atur posisinya */
             #print-area {
                 display: block !important;
                 position: absolute;
@@ -538,7 +551,6 @@
                 width: 100%;
             }
 
-            /* Hapus bayangan, border, dan latar belakang yang tidak perlu */
             #print-area, #print-area * {
                 box-shadow: none !important;
                 border-color: #000 !important;
@@ -546,9 +558,10 @@
                 color: #000 !important;
             }
             
-            #print-area .ticket-print-content {
-                font-family: 'Courier New', Courier, monospace; /* Gunakan font monospaced untuk kerapian */
-                font-size: 10pt; /* Ukuran font yang umum untuk struk */
+            #print-area .ticket-print-content,
+            #print-area .ticket-preview-content {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 10pt;
                 line-height: 1.4;
                 padding: 0;
                 margin: 0;
@@ -560,14 +573,16 @@
                 text-align: center;
             }
             
-            #print-area .logo-print {
-                max-width: 120px !important; /* Sesuaikan ukuran logo untuk cetak */
+            #print-area .logo-print,
+            #print-area .logo {
+                max-width: 120px !important;
                 margin-bottom: 10px;
             }
 
             #print-area .company-details h3 {
                 font-size: 12pt;
                 font-weight: bold;
+                text-transform: uppercase;
             }
 
             #print-area .company-details p {
@@ -578,10 +593,12 @@
             #print-area .ticket-title {
                 font-size: 11pt;
                 font-weight: bold;
+                text-transform: uppercase;
                 border-top: 1px dashed #000;
                 border-bottom: 1px dashed #000;
                 padding: 5px 0;
                 margin: 10px 0;
+                text-align: center;
             }
             
             #print-area .ticket-table {
@@ -590,14 +607,20 @@
             }
             
             #print-area .ticket-table td {
-                padding: 2px 0; /* Kurangi padding untuk menghemat ruang */
+                padding: 2px 0;
                 border: none;
                 vertical-align: top;
             }
 
             #print-area .ticket-table td:first-child {
                 font-weight: normal;
-                width: 110px; /* Lebar kolom label */
+                width: 110px;
+            }
+            
+            #print-area .ticket-separator {
+                border: none;
+                border-top: 1px dashed #000;
+                margin: 5px 0;
             }
 
             #print-area .netto-row td {
@@ -625,8 +648,8 @@
             }
 
             #print-area .signature-line {
-                margin-top: 40px; /* Jarak untuk tanda tangan */
-                border-top: 1px solid #000; /* Garis solid */
+                margin-top: 40px;
+                border-top: 1px solid #000;
                 height: 1px;
             }
             
@@ -640,8 +663,6 @@
             }
         }
         
-        /* === PERBAIKAN CSS PRINT SELESAI === */
-
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -667,26 +688,6 @@
                 flex-grow: 1;
                 text-align: center;
                 min-width: calc(50% - 5px);
-            }
-
-            .company-info {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .company-details h3 {
-                font-size: 1.5rem;
-            }
-
-            .ticket-title {
-                font-size: 1.2rem;
-            }
-
-            .signature-area {
-                flex-direction: column;
-                gap: 30px;
-                align-items: center;
             }
 
             .report-stats {
@@ -840,7 +841,7 @@
             </div>
         </div>
         <div id="reports" class="tab-content" role="tabpanel">
-            <div class="report-container">
+             <div class="report-container">
                 <div class="loading-overlay" id="reportLoading">
                     <div class="spinner" aria-label="Memuat laporan"></div>
                 </div>
@@ -1229,34 +1230,42 @@
                     }
                 }
                 
-                // === PERBAIKAN JAVASCRIPT PRINT DIMULAI DI SINI ===
+                // === FUNGSI generateTicketHTML YANG DIPERBARUI ===
                 generateTicketHTML(ticket) {
-                    // Fungsi ini sekarang menghasilkan HTML yang lebih sederhana dan bersih untuk printer struk
                     const formatKg = (num) => num.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
+                    // HTML ini sekarang lebih terstruktur untuk tampilan struk
                     return `
-                        <div class="ticket-print-content">
+                        <div class="ticket-preview-content">
                             <div class="company-info">
-                                <img src="res/logo.png" alt="Logo" class="logo-print">
+                                <img src="res/logo.png" alt="Logo" class="logo">
                                 <div class="company-details">
                                     <h3>${this.settings.companyName}</h3>
                                     <p>${this.settings.companyAddress}</p>
                                     <p>Telp: ${this.settings.companyPhone}</p>
                                 </div>
                             </div>
-                            <h2 class="ticket-title">TIKET TIMBANGAN</h2>
+                            
+                            <div class="ticket-title">Tiket Timbangan</div>
+                            
                             <table class="ticket-table">
                                 <tr><td>No. Tiket</td><td>: ${ticket.id}</td></tr>
                                 <tr><td>Tanggal</td><td>: ${ticket.date} / ${ticket.time}</td></tr>
                                 <tr><td>No. Kendaraan</td><td>: ${ticket.vehicleNumber}</td></tr>
                                 <tr><td>Pelanggan</td><td>: ${ticket.customer}</td></tr>
                                 <tr><td>Barang</td><td>: ${ticket.itemName}</td></tr>
-                                <tr><td colspan="2"><hr style="border:none; border-top: 1px dashed #000; margin: 5px 0;"></td></tr>
+                            </table>
+                            
+                            <hr class="ticket-separator">
+                            
+                            <table class="ticket-table">
                                 <tr><td>Gross</td><td>: ${formatKg(ticket.gross)} kg</td></tr>
                                 <tr><td>Tare</td><td>: ${formatKg(ticket.tare)} kg</td></tr>
                                 <tr class="netto-row"><td>Netto</td><td>: ${formatKg(ticket.netto)} kg</td></tr>
-                                ${ticket.notes ? `<tr><td colspan="2"><hr style="border:none; border-top: 1px dashed #000; margin: 5px 0;"></td></tr><tr><td>Catatan</td><td>: ${ticket.notes}</td></tr>` : ''}
                             </table>
+                            
+                            ${ticket.notes ? `<hr class="ticket-separator"><table class="ticket-table"><tr><td>Catatan</td><td>: ${ticket.notes}</td></tr></table>` : ''}
+                            
                             <div class="signature-area">
                                 <div class="signature-box">
                                     <p>Penimbang</p>
@@ -1267,21 +1276,21 @@
                                     <div class="signature-line"></div>
                                 </div>
                             </div>
+                            
                             <div class="ticket-note">
                                 <strong>Note:</strong> Timbangan diatas pukul 16:00 WIB harga disesuaikan, dan harus telepon terlebih dahulu.
                             </div>
                         </div>`;
                 }
-                // === PERBAIKAN JAVASCRIPT PRINT SELESAI ===
 
+                // === FUNGSI renderTicketPreview YANG DIPERBARUI ===
                 async renderTicketPreview(ticket) {
                     this.ticketLoading.classList.add('active');
                     await new Promise(resolve => setTimeout(resolve, 100));
-                    // Untuk pratinjau di layar, kita gunakan HTML yang sedikit berbeda dari versi cetak
-                    const previewHtml = this.generateTicketHTML(ticket)
-                        .replace('<div class="ticket-print-content">', '<div class="ticket-preview-content" style="padding:20px;">')
-                        .replace('logo-print', 'logo');
-                    this.ticketContent.innerHTML = previewHtml;
+                    
+                    // Langsung render HTML struk tanpa perlu replace
+                    this.ticketContent.innerHTML = this.generateTicketHTML(ticket);
+
                     this.ticketContainer.classList.remove('hidden');
                     this.ticketLoading.classList.remove('active');
                 }
@@ -1297,6 +1306,7 @@
                 printTicketById(id) {
                     const ticketData = this.data.find(d => d.id === id);
                     if (ticketData) {
+                        // Untuk print, kita gunakan HTML yang sama persis
                         this.printArea.innerHTML = this.generateTicketHTML(ticketData);
                         window.print();
                     }
